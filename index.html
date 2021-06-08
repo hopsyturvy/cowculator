@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="cowculator.css">
+
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+
+
+    <div class="app-container" id="app-container">
+        <div class="app-tab-picker">
+            <div class="app-current-tab app-tab" id="app-Cowculator-tab">
+                The Cowculator
+            </div>
+            <div class="app-alt-tab app-tab" id="app-Reversecow-tab">
+                Reverse Cowculator
+            </div>
+        </div>
+
+        <form class="app-form" id="app-Cowculator-form" onsubmit="return false">
+
+            <div class="app-input-grid app-six-column-grid">
+
+                <div class="app-grid-header six-column-span">
+
+                    Espresso
+                </div>
+
+
+
+                <!-- row 1-->
+                <label for="coffeeweight" class="app-grid-label">Weight</label>
+                <input class="app-form-input" type="number" min="0" id="coffeeweight" name="coffeeweight" required>
+                <div class="app-grid-unit-fixed">g</div>
+
+                <label for="TDS" class="app-grid-label">TDS</label>
+                <input class="app-form-input" type="number" min="0" id="TDS" name="TDS" required>
+                <div class="app-grid-unit-fixed">%</div>
+
+                <div class="grid-row-separator column-span-1-2">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+                <div class="grid-row-separator column-span-4-5">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+
+                <div class="app-grid-header six-column-span">
+
+                    Milk
+                </div>
+
+
+                <!-- row 2-->
+                <label for="milkweight" class="app-grid-label">Weight</label>
+                <input class="app-form-input" type="number" min="0" id="milkweight" name="milkweight" required>
+                <div class="app-grid-unit-fixed">g</div>
+
+                <label for="fat" class="app-grid-label">Fat</label>
+                <input class="app-form-input" type="number" min="0" id="fat" name="fat" required>
+                <div class="app-grid-unit-fixed">%</div>
+
+                <div class="grid-row-separator column-span-1-2">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+                <div class="grid-row-separator column-span-4-5">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+
+
+                <!-- row 3-->
+                <label for="lactose" class="app-grid-label">Lactose</label>
+                <input class="app-form-input" type="number" min="0" id="lactose" name="lactose" required>
+                <div class="app-grid-unit-fixed">%</div>
+
+                <label for="protein" class="app-grid-label">Protein</label>
+                <input class="app-form-input" type="number" min="0" id="protein" name="protein" required>
+                <div class="app-grid-unit-fixed">%</div>
+
+                <div class="grid-row-separator column-span-1-2">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+                <div class="grid-row-separator column-span-4-5">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+            <input type="submit" class="app-submit-button" id="cowculator-submit" value="Calculate">
+
+
+
+            <div class="app-output-container app-five-column-grid">
+                <div class="app-output-title five-column-span">Cappuccino</div>
+
+                <!-- row 1-->
+
+
+                <div class="app-output-label">
+                    Coffee:
+                </div>
+                <div class="app-output Output" id="coffeeweightoutput"></div>
+                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output Output" id="coffeestrengthoutput"></div>
+                <div class="app-grid-unit-fixed">%</div>
+
+                <!-- row 2-->
+
+                <div class="app-output-label">
+                    Fat:
+                </div>
+                <div class="app-output Output" id="fatweightoutput"></div>
+                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output Output" id="fatstrengthoutput"></div>
+                <div class="app-grid-unit-fixed">%</div>
+
+                <!-- row 3-->
+
+                <div class="app-output-label">
+                    Lactose:
+                </div>
+                <div class="app-output Output" id="lactoseweightoutput"></div>
+                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output Output" id="lactosestrengthoutput"></div>
+                <div class="app-grid-unit-fixed">%</div>
+
+                <!-- row 4-->
+
+                <div class="app-output-label">
+                    Protein:
+                </div>
+                <div class="app-output Output" id="proteinweightoutput"></div>
+                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output Output" id="proteinstrengthoutput"></div>
+                <div class="app-grid-unit-fixed">%</div>
+
+                <!-- row 5-->
+
+                <div class="app-output-label">
+                    Water:
+                </div>
+                <div class="app-output Output" id="proteinweightoutput"></div>
+                <div class="app-grid-unit-fixed">g</div>
+                <div>
+                    <!--spacer-->
+                </div>
+                <div>
+                    <!--spacer-->
+                </div>
+
+                <!-- row 6-->
+
+                <div class="app-output-label">
+                    Total:
+                </div>
+                <div class="app-output Output" id="totalweightoutput"></div>
+                <div class="app-grid-unit-fixed">g</div>
+                <div>
+                    <!--spacer-->
+                </div>
+                <div>
+                    <!--spacer-->
+                </div>
+
+
+
+
+
+                
+
+
+
+
+
+            </div>
+
+        </form>
+
+        <form class="app-form app-hidden-form" id="app-remin-form" onsubmit="return false">
+
+            <div class="app-input-grid app-six-column-grid">
+                <!-- header row -->
+                <div class="app-griditem">
+                    <!--spacer-->
+                </div>
+
+                <div class="app-grid-header-spacer">
+                    <!-- Extra column spacer-->
+                </div>
+
+                <div class="app-grid-header">
+                    GH
+                </div>
+
+                <div class="app-grid-header">
+                    KH
+                </div>
+
+                <div class="app-grid-header-spacer">
+                    <!-- Extra column spacer-->
+                </div>
+
+                <div class="app-griditem">
+                    <!--spacer-->
+                </div>
+
+                <!-- row 1-->
+                <label for="BaseGH" class="app-grid-label">Base water</label>
+                <div class="app-griditem">
+                    <!--spacer-->
+                </div>
+                <input class="app-form-input base-water-input" type="number" min="0" id="BaseGH" name="BaseGH" value=0
+                    required>
+                <input class="app-form-input base-water-input" type="number" min="0" id="BaseKH" name="BaseKH" value=0
+                    required>
+                <div class="app-griditem">
+                    <!--spacer-->
+                </div>
+                <select class="app-form-unit-selector" name="BaseWater" id="BaseWater">
+                    <option value="Custom">Custom</option>
+                </select>
+
+                <div class="grid-row-separator five-column-span">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+
+                <!-- row 2-->
+                <label for="TargetGH" class="app-grid-label">Target water</label>
+                <div class="app-griditem">
+                    <!--spacer-->
+                </div>
+                <input class="app-form-input target-water-input" type="number" min="0" id="TargetGH" name="TargetGH"
+                    value=0 required>
+                <input class="app-form-input target-water-input" type="number" min="0" id="TargetKH" name="TargetKH"
+                    value=0 required>
+                <div class="app-griditem">
+                    <!--spacer-->
+                </div>
+                <select class="app-form-unit-selector" name="TargetWater" id="TargetWater">
+                    <option value="Custom">Custom</option>
+                </select>
+
+                <div class="grid-row-separator five-column-span">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+
+                <!-- row 3-->
+                <label for="TargetVolume" class="app-grid-label column-span-1-3">Amount to make</label>
+
+                <input class="app-form-input" type="number" min="0" id="TargetVolume" name="TargetVolume" value=1
+                    required>
+                <div class="app-griditem">
+                    <!--spacer-->
+                </div>
+                <select class="app-form-unit-selector" name="WaterUnits" id="WaterUnits">
+                    <option value="Litres">Litres</option>
+                    <option value="Gallons">Gallons</option>
+                </select>
+
+                <div class="grid-row-separator five-column-span">
+                </div>
+                <div class="grid-row-separator">
+                </div>
+
+
+
+
+
+            </div>
+
+
+            <input type="submit" class="app-submit-button" id="remin-submit" value="Calculate">
+
+            <div class="app-output-container">
+                <div class="app-output-title">Recipe</div>
+
+                <div class="app-results-container">
+
+                    <div class="app-grid-section">
+                        <div class="app-output-value">
+                            <div class="app-output-label">
+                                Hardness:&nbsp;
+                            </div>
+                            <div class="app-output Output" id="HardnessVolume"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-grid-section">
+                        <div class="app-output-value">
+                            <div class="app-output-label">
+                                Buffer:&nbsp;
+                            </div>
+                            <div class="app-output Output" id="BufferVolume"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-grid-section">
+                        <div class="app-output-value">
+                            <div class="app-output-label">
+                                Water:&nbsp;
+                            </div>
+                            <div class="app-output Output" id="WaterVolume"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="cowculator.js"></script>
+
+</body>
+
+</html>
