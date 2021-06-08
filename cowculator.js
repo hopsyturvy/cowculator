@@ -155,18 +155,19 @@ function switchTab (event) {
         let thisform;
 
         switch (this.id) {
-            case "app-bottle-tab":
-                thisform = document.getElementById("app-bottle-form");
+            case "app-Cowculator-tab":
+                thisform = document.getElementById("app-Cowculator-form");
                 thisform.classList.remove("app-hidden-form");
                 break;
-            case "app-LSI-tab":
-                thisform = document.getElementById("app-LSI-form");
+            case "app-Cupsize-tab":
+                thisform = document.getElementById("app-Cupsize-form");
                 thisform.classList.remove("app-hidden-form");
                 break;
-            case "app-remin-tab":
-                thisform = document.getElementById("app-remin-form");
-                thisform.classList.remove("app-hidden-form");
-                break;
+
+                case "app-Sprosize-tab":
+                    thisform = document.getElementById("app-Sprosize-form");
+                    thisform.classList.remove("app-hidden-form");
+                    break;
 
         }
         
