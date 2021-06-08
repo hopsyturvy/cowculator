@@ -96,7 +96,7 @@
     float: right;
     border: solid #f4f4f4;
     border-width: 0 0 2px 0;
-    width: 6em;
+    width: 2em;
 }
 
 .app-form-unit-selector {
@@ -121,7 +121,7 @@
     background-position: right 0 top 55%,0 0!important;
     background-size: 8px auto,100%!important;
     font-family: inherit;
-    min-width: 6em;
+    min-width: 2em;
 }
 
 .app-form-unit-selector:focus { 
@@ -289,7 +289,7 @@ input.app-input-error {
 }
 
 .app-grid-unit-fixed {
-    min-width: 6em;
+    min-width: 2em;
 }
 
 /* Results section */
@@ -298,8 +298,10 @@ input.app-input-error {
     width: 100%;
     display: grid;
     column-gap: 1em;
-    align-items: baseline;
-    margin-top: 40px;
+    row-gap: 0.5em;
+    align-items: baseline;   
+    box-sizing: border-box;
+
 
 }
 
@@ -342,12 +344,19 @@ input.app-input-error {
     opacity: 30%;
 }
 
+.grey-box {
+    background-color: #FFFFFF15;
+    padding: 1em;
+    border-radius: 5px; 
+    
+}
+
 
 @media all and (max-width: 980px) {
     .app-container {
       max-width: 100%;
-      padding-left: 0px;
-      padding-right: 0px;
+      padding-left: 5px;
+      padding-right: 5px;
     }
 
   }

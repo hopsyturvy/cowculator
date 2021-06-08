@@ -65,8 +65,8 @@ var TargetWaterSpecs = [
 //Initialise
 window.onload = function () {
 
-    resizeTweak ();
-    window.addEventListener("resize", resizeTweak);
+//    resizeTweak ();
+//    window.addEventListener("resize", resizeTweak);
     
     var tabs = document.querySelectorAll(".app-tab");
     tabs.forEach(element => {
@@ -447,6 +447,7 @@ function checkError() {
 
 // Size tweak
 
+
 function resizeTweak () {
     var container = document.getElementById("app-container")
    
@@ -455,16 +456,6 @@ function resizeTweak () {
         spacers.forEach(element => {
             element.classList.add("zero-width");
         });
-
-        var blocky = document.querySelectorAll(".app-output-container");
-        blocky.forEach(element => {
-            element.classList.add("blocky");
-        });
-
-        var hidetitle = document.querySelectorAll(".app-output-title");
-        hidetitle.forEach(element => {
-            element.classList.add("hide-title");
-            });
 
 
 
@@ -475,15 +466,6 @@ function resizeTweak () {
             element.classList.remove("zero-width");
         });
 
-        var blocky = document.querySelectorAll(".app-output-container");
-        blocky.forEach(element => {
-        element.classList.remove("blocky");
-        });
-
-        var hidetitle = document.querySelectorAll(".app-output-title");
-        hidetitle.forEach(element => {
-            element.classList.remove("hide-title");
-            });
 
     }
 
