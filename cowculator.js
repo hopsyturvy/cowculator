@@ -172,21 +172,24 @@ function calculateSprosize() {
     var sproaeration = 0.01 * Number(document.getElementById("sproaeration").value);
     var cupvolume = Number(document.getElementById("sprocupvolume").value);
     var sprocondensation = 0.01 * Number(document.getElementById("sprocondensation").value);
+    var cupvolpicker = document.getElementById("cupvolpicker").value
 
+    //units tweak
+
+    if (cupvolpicker == "ml") {
+        cupvolume_ml = cupvolume
+    } else {
+        cupvolume_ml = cupvolume * 28.41
+    }
 
     //calculations
     
     var dilution = (sproTDS - sprodesiredTDS) / sproTDS;
     var volincrease = (sproaeration - sprocondensation) / (1 + sprocondensation);
     var aeffect = dilution * volincrease;
-    var effectivevol = cupvolume / (1 + aeffect);
+    var effectivevol = cupvolume_ml / (1 + aeffect);
     var sprosize = (1 - dilution) * effectivevol;
 
-    console.log ("dilution = " + dilution);
-    console.log ("vol increase = " + volincrease);
-    console.log ("aeration effect = " + aeffect);
-    console.log ("effective vol = " + effectivevol);
-    console.log ("final answer = " + sprosize);
 
     // Display results
     document.getElementById("sproweightoutput").innerHTML = Math.round(sprosize * 100) / 100;

@@ -362,10 +362,15 @@
 
                 <div class="app-grid-section">
                     <label for="sprocupvolume" class="app-grid-label">Cup volume</label>
-                    <input class="app-form-input column-span-2-5" type="number" min="0" id="sprocupvolume"
+                    <input class="app-form-input" type="number" min="0" id="sprocupvolume"
                         name="sprocupvolume" required>
                 </div>
-                <div class="app-grid-unit-fixed">ml</div>
+                <div class="app-grid-section">
+                <select class="app-form-unit-selector" name="cupvolpicker" id="cupvolpicker">
+                    <option value="ml">ml</option>
+                    <option value="oz">oz</option>
+                </select>
+                </div>
 
             </div>
 
