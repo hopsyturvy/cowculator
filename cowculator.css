@@ -85,6 +85,14 @@
     width: 49%;
 }
 
+input {
+    padding: 0;
+}
+
+input:focus {
+
+    outline: none;
+}
 
 .app-form-input::-webkit-outer-spin-button,
 .app-form-input::-webkit-inner-spin-button {
@@ -96,7 +104,7 @@
     float: right;
     border: solid #f4f4f4;
     border-width: 0 0 2px 0;
-    width: 2em;
+    width: 1.5em;
 }
 
 .app-form-unit-selector {
@@ -121,7 +129,7 @@
     background-position: right 0 top 55%,0 0!important;
     background-size: 8px auto,100%!important;
     font-family: inherit;
-    min-width: 2em;
+    min-width: 1.5em;
 }
 
 .app-form-unit-selector:focus { 
@@ -213,11 +221,15 @@ input.app-input-error {
 }
 
 .app-four-column-grid {
-    grid-template-columns: auto 1fr 1fr auto;
+    grid-template-columns: 1fr auto 1fr auto;
 }
 
 .app-three-column-grid {
     grid-template-columns: auto 1fr auto;
+}
+
+.app-two-column-grid {
+    grid-template-columns: 1fr auto;
 }
 
 .app-grid-header {
@@ -228,6 +240,20 @@ input.app-input-error {
 
     margin-top: 0px;
     margin-bottom: 10px;
+}
+
+.app-grid-section {
+    display: flex;
+}
+
+.app-grid-section, .app-grid-unit-fixed {
+    border-bottom: solid white 2px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.app-grid-label {
+    white-space: nowrap;
 }
 
 .app-grid-header-spacer {
@@ -261,7 +287,7 @@ input.app-input-error {
 
 
 .two-column-span {
-    grid-column: 1 / span 2;
+    grid-column: span 2;
 }
 
 .three-column-span {
@@ -288,9 +314,11 @@ input.app-input-error {
     grid-column: 3 / span 2;
 }
 
-.app-grid-unit-fixed {
-    min-width: 2em;
+.app-grid-unit-fixed, .app-output-unit-fixed {
+    min-width: 1.5em;
 }
+
+
 
 /* Results section */
 
@@ -298,8 +326,7 @@ input.app-input-error {
     width: 100%;
     display: grid;
     column-gap: 1em;
-    row-gap: 0.5em;
-    align-items: baseline;   
+    align-items: center;   
     box-sizing: border-box;
 
 
@@ -311,8 +338,6 @@ input.app-input-error {
     margin-bottom: 20px;  
 }
 
-.app-output-label {
-}
 
 .app-output {
     text-align: right;
@@ -348,18 +373,19 @@ input.app-input-error {
     background-color: #FFFFFF15;
     padding: 1em;
     border-radius: 5px; 
-    
+    row-gap: 0.5em;
 }
 
 
-@media all and (max-width: 980px) {
-    .app-container {
+
+/* JS selectable options */
+
+    .app-container.full-width {
       max-width: 100%;
       padding-left: 5px;
       padding-right: 5px;
     }
 
-  }
 
 
     .app-output-container.blocky {

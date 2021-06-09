@@ -21,87 +21,111 @@
     <div class="app-container" id="app-container">
         <div class="app-tab-picker">
             <div class="app-current-tab app-tab" id="app-Cowculator-tab">
-                The Cowculator
+                Cowculator
             </div>
             <div class="app-alt-tab app-tab" id="app-Cupsize-tab">
-                Cup Size Cowculator
+                Cup Size
             </div>
             <div class="app-alt-tab app-tab" id="app-Sprosize-tab">
-                Spro Size Cowculator
+                Reverse Cowculator
             </div>
         </div>
 
         <form class="app-form" id="app-Cowculator-form" onsubmit="return false">
 
-            <div class="app-input-grid app-six-column-grid">
+            <div class="app-input-grid app-four-column-grid" id="cowculator-input-grid">
 
-                <div class="app-grid-header six-column-span">
+                <div class="app-grid-header two-column-span">
 
                     Espresso
                 </div>
+                <div>
+                    <!--spacer-->
+                </div>
+                <div>
+                    <!--spacer-->
+                </div>
+
 
 
 
                 <!-- row 1-->
-                <label for="coffeeweight" class="app-grid-label">Weight</label>
-                <input class="app-form-input" type="number" min="0" id="coffeeweight" name="coffeeweight" required>
+                <div class="app-grid-section">
+
+                    <label for="coffeeweight" class="app-grid-label">Weight</label>
+                    <input class="app-form-input" type="number" min="0" id="coffeeweight" name="coffeeweight" required>
+                </div>
                 <div class="app-grid-unit-fixed">g</div>
 
-                <label for="TDS" class="app-grid-label">TDS</label>
-                <input class="app-form-input" type="number" min="0" id="TDS" name="TDS" required>
+
+                <div class="app-grid-section">
+                    <label for="TDS" class="app-grid-label">TDS</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="TDS" name="TDS" required>
+                </div>
                 <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator column-span-1-2">
-                </div>
-                <div class="grid-row-separator">
-                </div>
-                <div class="grid-row-separator column-span-4-5">
-                </div>
-                <div class="grid-row-separator">
-                </div>
 
-                <div class="app-grid-header six-column-span">
+                <div class="app-grid-header two-column-span">
 
                     Milk
                 </div>
+                <div>
+                    <!--spacer-->
+                </div>
+                <div>
+                    <!--spacer-->
+                </div>
+
 
 
                 <!-- row 2-->
-                <label for="milkweight" class="app-grid-label">Weight</label>
-                <input class="app-form-input" type="number" min="0" id="milkweight" name="milkweight" required>
+                <div class="app-grid-section">
+                    <label for="milkweight" class="app-grid-label">Weight</label>
+                    <input class="app-form-input" type="number" min="0" id="milkweight" name="milkweight" required>
+                </div>
                 <div class="app-grid-unit-fixed">g</div>
 
-                <label for="fat" class="app-grid-label">Fat</label>
-                <input class="app-form-input" type="number" min="0" id="fat" name="fat" required>
+                <div class="app-grid-section">
+                    <label for="fat" class="app-grid-label">Fat</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="fat" name="fat" value="3.7"
+                        required>
+                </div>
                 <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator column-span-1-2">
-                </div>
-                <div class="grid-row-separator">
-                </div>
-                <div class="grid-row-separator column-span-4-5">
-                </div>
-                <div class="grid-row-separator">
-                </div>
 
 
                 <!-- row 3-->
-                <label for="lactose" class="app-grid-label">Lactose</label>
-                <input class="app-form-input" type="number" min="0" id="lactose" name="lactose" required>
+                <div class="app-grid-section">
+                    <label for="lactose" class="app-grid-label">Lactose</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="lactose" name="lactose"
+                        value="4.7" required>
+                </div>
+
                 <div class="app-grid-unit-fixed">%</div>
 
-                <label for="protein" class="app-grid-label">Protein</label>
-                <input class="app-form-input" type="number" min="0" id="protein" name="protein" required>
+                <div class="app-grid-section">
+                    <label for="protein" class="app-grid-label">Protein</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="protein" name="protein"
+                        value="3.5" required>
+                </div>
                 <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator column-span-1-2">
+
+
+                <!-- row 4-->
+                <div class="app-grid-section">
+                    <label for="condensation" class="app-grid-label">Condensation</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="condensation" value="7.5"
+                        name="condensation" required>
                 </div>
-                <div class="grid-row-separator">
+                <div class="app-grid-unit-fixed">%</div>
+
+                <div class="app-grid-section">
+                    <label for="aeration" class="app-grid-label">Aeration</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="aeration" value="33"
+                        name="aeration" required>
                 </div>
-                <div class="grid-row-separator column-span-4-5">
-                </div>
-                <div class="grid-row-separator">
-                </div>
+                <div class="app-grid-unit-fixed">%</div>
 
 
 
@@ -113,7 +137,7 @@
 
             <input type="submit" class="app-submit-button" id="cowculator-submit" value="Calculate">
 
-            <div class="app-output-title">Cappuccino</div>
+            <!--<div class="app-output-title">Cappuccino</div>-->
 
             <div class="app-output-container grey-box app-five-column-grid">
 
@@ -124,9 +148,9 @@
                     Coffee:
                 </div>
                 <div class="app-output Output" id="coffeeweightoutput"></div>
-                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output-label">g</div>
                 <div class="app-output Output" id="coffeestrengthoutput"></div>
-                <div class="app-grid-unit-fixed">%</div>
+                <div class="app-output-label">%</div>
 
                 <!-- row 2-->
 
@@ -134,9 +158,9 @@
                     Fat:
                 </div>
                 <div class="app-output Output" id="fatweightoutput"></div>
-                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output-label">g</div>
                 <div class="app-output Output" id="fatstrengthoutput"></div>
-                <div class="app-grid-unit-fixed">%</div>
+                <div class="app-output-label">%</div>
 
                 <!-- row 3-->
 
@@ -144,9 +168,9 @@
                     Lactose:
                 </div>
                 <div class="app-output Output" id="lactoseweightoutput"></div>
-                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output-label">g</div>
                 <div class="app-output Output" id="lactosestrengthoutput"></div>
-                <div class="app-grid-unit-fixed">%</div>
+                <div class="app-output-label">%</div>
 
                 <!-- row 4-->
 
@@ -154,31 +178,17 @@
                     Protein:
                 </div>
                 <div class="app-output Output" id="proteinweightoutput"></div>
-                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output-label">g</div>
                 <div class="app-output Output" id="proteinstrengthoutput"></div>
-                <div class="app-grid-unit-fixed">%</div>
+                <div class="app-output-label">%</div>
 
                 <!-- row 5-->
-
-                <div class="app-output-label">
-                    Water:
-                </div>
-                <div class="app-output Output" id="proteinweightoutput"></div>
-                <div class="app-grid-unit-fixed">g</div>
-                <div>
-                    <!--spacer-->
-                </div>
-                <div>
-                    <!--spacer-->
-                </div>
-
-                <!-- row 6-->
 
                 <div class="app-output-label">
                     Total weight:
                 </div>
                 <div class="app-output Output" id="totalweightoutput"></div>
-                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output-label">g</div>
                 <div>
                     <!--spacer-->
                 </div>
@@ -188,19 +198,15 @@
 
 
 
-                <!-- row 7-->
+                <!-- row 6-->
 
                 <div class="app-output-label">
                     Total volume:
                 </div>
                 <div class="app-output Output" id="totalvolumeoutput"></div>
-                <div class="app-grid-unit-fixed">ml</div>
-                <div>
-                    <!--spacer-->
-                </div>
-                <div>
-                    <!--spacer-->
-                </div>
+                <div class="app-output-label">ml</div>
+                <div class="app-output Output" id="totalvolumeoutput_oz"></div>
+                <div class="app-output-label">oz</div>
 
 
 
@@ -217,66 +223,67 @@
         </form>
 
         <form class="app-form app-hidden-form" id="app-Cupsize-form" onsubmit="return false">
-            <div class="app-input-grid app-six-column-grid">
+            <div class="app-input-grid app-four-column-grid" id="cupsize-grid">
 
                 <!-- row 1-->
-                <label for="cupsizecoffeeweight" class="app-grid-label">Espresso weight</label>
-                <input class="app-form-input" type="number" min="0" id="cupsizecoffeeweight" name="cupsizecoffeeweight"
-                    required>
+                <div class="app-grid-section">
+                    <label for="cupsizecoffeeweight" class="app-grid-label">Espresso weight</label>
+                    <input class="app-form-input" type="number" min="0" id="cupsizecoffeeweight"
+                        name="cupsizecoffeeweight" required>
+                </div>
                 <div class="app-grid-unit-fixed">g</div>
 
-                <label for="cupsizeTDS" class="app-grid-label">TDS</label>
-                <input class="app-form-input" type="number" min="0" id="cupsizeTDS" name="cupsizeTDS" required>
+                <div class="app-grid-section">
+                    <label for="cupsizeTDS" class="app-grid-label">TDS</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="cupsizeTDS" name="cupsizeTDS"
+                        required>
+                </div>
                 <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator column-span-1-2">
-                </div>
-                <div class="grid-row-separator">
-                </div>
-                <div class="grid-row-separator column-span-4-5">
-                </div>
-                <div class="grid-row-separator">
-                </div>
+
 
                 <!-- row 2-->
-                <label for="aeration" class="app-grid-label">Aeration</label>
-                <input class="app-form-input column-span-2-5" type="number" min="0" id="aeration" name="aeration"
-                    required>
+                <div class="app-grid-section">
+                    <label for="cupsizecondenation" class="app-grid-label">Condensation</label>
+                    <input class="app-form-input " type="number" min="0" max="100" id="cupsizecondensation"
+                        name="cupsizecondensation" value="7.5" required>
+                </div>
                 <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator five-column-span">
+                <div class="app-grid-section">
+                    <label for="cupsizeaeration" class="app-grid-label">Aeration</label>
+                    <input class="app-form-input " type="number" min="0" max="100" id="cupsizeaeration"
+                        name="cupsizeaeration" value="33" required>
                 </div>
-                <div class="grid-row-separator">
-                </div>
+                <div class="app-grid-unit-fixed">%</div>
+
 
                 <!-- row 3-->
-                <label for="desiredTDS" class="app-grid-label">Desired TDS</label>
-                <input class="app-form-input column-span-2-5" type="number" min="0" id="desiredTDS" name="desiredTDS"
-                    required>
+                <div class="app-grid-section">
+                    <label for="desiredTDS" class="app-grid-label">Target strength</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="desiredTDS" name="desiredTDS"
+                        required>
+                </div>
                 <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator five-column-span">
-                </div>
-                <div class="grid-row-separator">
-                </div>
             </div>
 
             <input type="submit" class="app-submit-button" id="cupsize-cowculator-submit" value="Calculate">
 
-            <div class="app-output-title">Cup size</div>
-            <div class="app-output-container app-three-column-grid">
-                
+            <!--<div class="app-output-title">Cup size</div>-->
+            <div class="app-output-container app-five-column-grid">
+
 
                 <!-- row 1-->
 
 
-                <div class="app-output-label">
+                <div class="app-output-label three-column-span">
                     Milk weight:
                 </div>
                 <div class="app-output Output" id="milkweightoutput"></div>
-                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output-unit-fixed">g</div>
 
-                <div class="grid-row-separator column-span-1-2">
+                <div class="grid-row-separator four-column-span">
                 </div>
 
                 <div class="grid-row-separator">
@@ -289,9 +296,18 @@
                     Cup volume:
                 </div>
                 <div class="app-output Output" id="cupvolumeoutput"></div>
-                <div class="app-grid-unit-fixed">ml</div>
+                <div class="app-output-unit-fixed">ml</div>
+                <div class="app-output Output" id="cupvolumeoutput_oz"></div>
+                <div class="app-output-unit-fixed">oz</div>
+
 
                 <div class="grid-row-separator column-span-1-2">
+                </div>
+
+                <div class="grid-row-separator">
+                </div>
+
+                <div class="grid-row-separator">
                 </div>
 
                 <div class="grid-row-separator">
@@ -307,65 +323,64 @@
         </form>
 
         <form class="app-form app-hidden-form" id="app-Sprosize-form" onsubmit="return false">
-            <div class="app-input-grid app-six-column-grid">
+            <div class="app-input-grid app-four-column-grid" id="sprosize-grid">
 
                 <!-- row 1-->
-                <label for="sprocupvolume" class="app-grid-label">Cup volume</label>
-                <input class="app-form-input column-span-2-5" type="number" min="0" id="sprocupvolume" name="sprocupvolume"
-                    required>
-                <div class="app-grid-unit-fixed">ml</div>
+                <div class="app-grid-section">
+                    <label for="sproTDS" class="app-grid-label">Espresso TDS</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="sproTDS" name="sproTDS" required>
+                </div>
+                <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator five-column-span">
+                <div class="app-grid-section">
+                    <label for="sprodesiredTDS" class="app-grid-label">Target strength</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="sprodesiredTDS"
+                        name="sprodesiredTDS" required>
                 </div>
-                <div class="grid-row-separator">
-                </div>
+                <div class="app-grid-unit-fixed">%</div>
+
 
                 <!-- row 2-->
-                <label for="sproaeration" class="app-grid-label">Aeration</label>
-                <input class="app-form-input column-span-2-5" type="number" min="0" id="sproaeration" name="sproaeration"
-                    required>
+
+                <div class="app-grid-section">
+                    <label for="sprocondensation" class="app-grid-label">Condensation</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="sprocondensation"
+                        name="sprocondensation" value="7.5" required>
+                </div>
                 <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator five-column-span">
+                <div class="app-grid-section">
+                    <label for="sproaeration" class="app-grid-label">Aeration</label>
+                    <input class="app-form-input" type="number" min="0" max="100" id="sproaeration" name="sproaeration"
+                        value="33" required>
                 </div>
-                <div class="grid-row-separator">
-                </div>
+                <div class="app-grid-unit-fixed">%</div>
+
+
 
                 <!-- row 3-->
-                <label for="sproTDS" class="app-grid-label">Espresso TDS</label>
-                <input class="app-form-input column-span-2-5" type="number" min="0" id="sproTDS" name="sproTDS"
-                    required>
-                <div class="app-grid-unit-fixed">%</div>
 
-                <div class="grid-row-separator five-column-span">
+                <div class="app-grid-section">
+                    <label for="sprocupvolume" class="app-grid-label">Cup volume</label>
+                    <input class="app-form-input column-span-2-5" type="number" min="0" id="sprocupvolume"
+                        name="sprocupvolume" required>
                 </div>
-                <div class="grid-row-separator">
-                </div>
+                <div class="app-grid-unit-fixed">ml</div>
 
-                <!-- row 4-->
-                <label for="sprodesiredTDS" class="app-grid-label">Desired TDS</label>
-                <input class="app-form-input column-span-2-5" type="number" min="0" id="sprodesiredTDS" name="sprodesiredTDS"
-                    required>
-                <div class="app-grid-unit-fixed">%</div>
-
-                <div class="grid-row-separator five-column-span">
-                </div>
-                <div class="grid-row-separator">
-                </div>
             </div>
 
             <input type="submit" class="app-submit-button" id="spro-cowculator-submit" value="Calculate">
-            
-            <div class="app-output-title">Result</div>
+
+            <!-- <div class="app-output-title">Result</div> -->
             <div class="app-output-container app-three-column-grid">
                 <!-- row 1-->
 
-                
+
                 <div class="app-output-label">
                     Espresso size:
                 </div>
                 <div class="app-output Output" id="sproweightoutput"></div>
-                <div class="app-grid-unit-fixed">g</div>
+                <div class="app-output-unit-fixed">g</div>
 
                 <div class="grid-row-separator column-span-1-2">
                 </div>

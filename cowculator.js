@@ -1,72 +1,11 @@
 //global variables
 
-var BaseWaterSpecs = [
-    {
-        "name": "Distilled Water",
-        "GH": 0,
-        "KH": 0
-    },
-    {
-        "name": "Acqua Panna",
-        "GH": 104,
-        "KH": 82
-    },{
-        "name": "Ashbeck (UK)",
-        "GH": 42,
-        "KH": 21
-    },
-    {
-        "name": "Aqua Pura (UK)",
-        "GH": 64,
-        "KH": 41
-    },{
-        "name": "Spa (Belgium)",
-        "GH": 17,
-        "KH": 12
-    },{
-        "name": "Volvic",
-        "GH": 61.7,
-        "KH": 58.2
-    },{
-        "name": "VOSS",
-        "GH": 12,
-        "KH": 16
-    }
-];
-
-var TargetWaterSpecs = [
-    {
-        "name": "BH Recipe",
-        "GH": 80.7,
-        "KH": 40.1
-    },
-    {
-        "name": "SCA Spec",
-        "GH": 68.6,
-        "KH": 40.1
-    },
-    {
-        "name": "Rao",
-        "GH": 75.7,
-        "KH": 50.1
-    },
-    {
-        "name": "Hendon",
-        "GH": 99.9,
-        "KH": 30.8
-    },
-    {
-        "name": "Pretty Hard",
-        "GH": 126.1,
-        "KH": 35.1
-    }
-];
 
 //Initialise
 window.onload = function () {
 
-//    resizeTweak ();
-//    window.addEventListener("resize", resizeTweak);
+    resizeTweak ();
+    window.addEventListener("resize", resizeTweak);
     
     var tabs = document.querySelectorAll(".app-tab");
     tabs.forEach(element => {
@@ -84,55 +23,17 @@ window.onload = function () {
         element.addEventListener("change",hideResults);
     });
 
-    var LSIsubmit = document.getElementById("app-LSI-form");
-    LSIsubmit.addEventListener("submit", calculateLSI);
+    var Cowculatorsubmit = document.getElementById("app-Cowculator-form");
+    Cowculatorsubmit.addEventListener("submit", cowculate);
 
-    var Reminsubmit = document.getElementById("app-remin-form");
-    Reminsubmit.addEventListener("submit", calculateRemin);
+    var Cupsizesubmit = document.getElementById("app-Cupsize-form");
+    Cupsizesubmit.addEventListener("submit", calculateCupsize);
 
-    var Bottlesubmit = document.getElementById("app-bottle-form");
-    Bottlesubmit.addEventListener("submit", calculateBottle);
-
-    var bwi = document.querySelectorAll("base-water-input");
-    bwi.forEach(element => {
-        element.addEventListener("change", changeBaseWater);
-    });
-
-    var twi = document.querySelectorAll("target-water-input");
-    twi.forEach(element => {
-        element.addEventListener("change", changeTargetWater);
-    });
-
-    var bwp = document.getElementById("BaseWater");
-    bwp.addEventListener("change", changeBaseWaterPicker);
-
-    var twp = document.getElementById("TargetWater");
-    twp.addEventListener("change", changeTargetWaterPicker);
-    
-    BaseWaterSpecs.forEach(addToWaterSpecsList);
-    TargetWaterSpecs.forEach(addToTargetWaterList);
-
-    function addToWaterSpecsList(water) {
-        let WaterOption = document.createElement("OPTION");
-        let WaterText = document.createTextNode(water.name);
-        WaterOption.appendChild(WaterText);
-        document.getElementById("BaseWater").appendChild(WaterOption);
-    }
-
-
-    function addToTargetWaterList(water) {
-        let WaterOption = document.createElement("OPTION");
-        let WaterText = document.createTextNode(water.name);
-        WaterOption.appendChild(WaterText);
-        document.getElementById("TargetWater").appendChild(WaterOption);
-    }
-
+    var Sprosizesubmit = document.getElementById("app-Sprosize-form");
+    Sprosizesubmit.addEventListener("submit", calculateSprosize);
 
     
-    
-
 }
-
 
 // Tab switchers
 
@@ -180,8 +81,6 @@ function switchTab (event) {
       hideResults();
 }
 
-
-
 function hideResults() {
     document.querySelectorAll(".Output").forEach(element => {
         element.classList.add("app-hidden-results");
@@ -189,7 +88,6 @@ function hideResults() {
     checkError();
 
 }
-
 
 function showResults() {
     document.querySelectorAll(".Output").forEach(element => {
@@ -199,250 +97,159 @@ function showResults() {
 }
 
 
-
-
-
-
-//LSI calculator
-
-function calculateLSI() {
+function cowculate() {
+    var coffeeweight = Number(document.getElementById("coffeeweight").value);
     var TDS = Number(document.getElementById("TDS").value);
-    var pH = Number(document.getElementById("pH").value);
-    var KH = Number(document.getElementById("KH").value);
-    var GH = Number(document.getElementById("GH").value);
-    var Temperature = Number(document.getElementById("Temperature").value);
-    var KH_ppm;
-    var GH_ppm;
-    var TemperatureK;
-
-    var VCorrosive = "Highly corrosive — treatment required";
-    var Corrosive = "Corrosive — treatment required";
-    var SlightCorrosive = "Slightly corrosive but non scale-forming";
-    var Balanced = "Balanced. Pitting corrosion possible";
-    var SlightScaly = "Slightly scale forming and corrosive";
-    var Scaly = "Scale forming — treatment required";
-    var VScaly = "Highly scale forming — treatment required";
-
-    // convert units
-    if (document.getElementById("TempPicker").value == "C") {
-        TemperatureK = Temperature + 273;
-    } else {
-        TemperatureK = (Temperature - 32) * 5 / 9 + 273.15;
-        console.log(Temperature + "F is " + TemperatureK + "K");
-    }
-
-    if (document.getElementById("KHPicker").value == "ppm") {
-        KH_ppm = KH;
-    } else {
-        KH_ppm = KH * 17.848;
-        console.log(KH + "dH is " + KH_ppm + "ppm");
-    }
-
-    if (document.getElementById("GHPicker").value == "ppm") {
-        GH_ppm = GH;
-    } else {
-        GH_ppm = GH * 17.848;
-        console.log(GH + "dH is " + GH_ppm + "ppm");
-    }
+    var milkweight = Number(document.getElementById("milkweight").value);
+    var fat = Number(document.getElementById("fat").value);
+    var lactose = Number(document.getElementById("lactose").value);
+    var protein = Number(document.getElementById("protein").value);
+    var condensation = Number(document.getElementById("condensation").value);
+    var aeration = Number(document.getElementById("aeration").value);
 
 
-    // Calculations
-    var TDSFactor = (Math.log10(TDS) - 1) / 10;
-    var alkalinityFactor = Math.log10(KH_ppm);
-    var calciumFactor = Math.log10(GH_ppm) - 0.4;
-
-    var tempFactor_Custom = (-13.12 * Math.log10(TemperatureK)) + 34.55;
-    var pHs_Custom = (9.3 + TDSFactor + tempFactor_Custom) - (calciumFactor + alkalinityFactor);
-    var LSI_Custom = { number: pH - pHs_Custom };
-
-    var tempFactor_95 = (-13.12 * Math.log10(95 + 273)) + 34.55;
-    var pHs_95 = (9.3 + TDSFactor + tempFactor_95) - (calciumFactor + alkalinityFactor);
-    var LSI_95 = { number: pH - pHs_95 };
-
-    var tempFactor_125 = (-13.12 * Math.log10(125 + 273)) + 34.55;
-    var pHs_125 = (9.3 + TDSFactor + tempFactor_125) - (calciumFactor + alkalinityFactor);
-    var LSI_125 = { number: pH - pHs_125 };
-
-
-
-    // Text results
-
-    textResults(LSI_Custom);
-    textResults(LSI_95);
-    textResults(LSI_125);
-
-    function textResults(result) {
-
-        if (result.number < -2) {
-            result.text = VCorrosive;
-            result.style = "color: #d35d6d;";
-        } else if (result.number < -0.5) {
-            result.text = Corrosive;
-            result.style = "color: #d35d6d;";
-        } else if (result.number < 0) {
-            result.text = SlightCorrosive;
-            result.style = "";
-        } else if (result.number < 0.5) {
-            result.text = Balanced;
-            result.style = "";
-        } else if (result.number < 1) {
-            result.text = SlightScaly;
-            result.style = "";
-        } else if (result.number < 2) {
-            result.text = Scaly;
-            result.style = "color: #d35d6d;";
-        } else {
-            result.text = VScaly;
-            result.style = "color: #d35d6d;";
-        }
-
-    }
-
-
-
-
-    // Tweak units
-
-    if (document.getElementById("TempPicker").value == "C") {
-        document.getElementById("TempUnit").innerHTML = "C";
-    } else {
-        document.getElementById("TempUnit").innerHTML = "F";
-    }
-
+    //calculations
+    var totalweight = coffeeweight + milkweight * (1 + (condensation/100));
+    var coffee_g = coffeeweight * TDS / 100;
+    var coffee_strength = 100 * coffee_g / totalweight;
+    var fat_g = (milkweight * fat / 100) + coffeeweight * 0.0018;
+    var fat_strength = 100 * fat_g / totalweight;
+    var lactose_g = (milkweight * lactose / 100);
+    var lactose_strength = 100 * lactose_g / totalweight;
+    var protein_g = (milkweight * protein / 100) + coffeeweight * 0.0012;
+    var protein_strength = 100 * protein_g / totalweight;
+    var totalvolume_ml = coffeeweight + (milkweight * (1 + aeration/100));
+    var totalvolume_oz = totalvolume_ml / 28.41;
+    
 
     // Display results
-    document.getElementById("CustomTemp").innerHTML = Temperature;
-    document.getElementById("LSI_Custom").innerHTML = Math.round(LSI_Custom.number * 10) / 10;
-    document.getElementById("LSI_95").innerHTML = Math.round(LSI_95.number * 10) / 10;
-    document.getElementById("LSI_125").innerHTML = Math.round(LSI_125.number * 10) / 10;
-    document.getElementById("Result_Custom").innerHTML = LSI_Custom.text;
-    document.getElementById("Result_Custom").style = LSI_Custom.style;
-    document.getElementById("Result_95").innerHTML = LSI_95.text;
-    document.getElementById("Result_95").style = LSI_95.style;
-    document.getElementById("Result_125").innerHTML = LSI_125.text;
-    document.getElementById("Result_125").style = LSI_125.style;
-
-
-    showResults();
-
-
-
-}
-
-
-// Remineralisation calculator
-
-function calculateRemin() {
-    var BaseGH = Number(document.getElementById("BaseGH").value);
-    var BaseKH = Number(document.getElementById("BaseKH").value);
-    var TargetGH = Number(document.getElementById("TargetGH").value);
-    var TargetKH = Number(document.getElementById("TargetKH").value);
-    var TargetVolume = Number(document.getElementById("TargetVolume").value);
-
-    // Convert to mL
-    var WaterUnits = document.getElementById("WaterUnits").value;
-
-    if (WaterUnits == "Litres") {
-        TargetVolume_mL = TargetVolume*1000;
-    } else {
-        TargetVolume_mL = TargetVolume*3785,41;
-    }
-
-
-
-
-    // Calculate
-    var HardnessVolume = (TargetGH - BaseGH) * TargetVolume_mL/1000;
-    var BufferVolume = (TargetKH - BaseKH) * TargetVolume_mL/1000;
-    var WaterVolume = TargetVolume_mL - HardnessVolume - BufferVolume;
-
-
-    //Display results
-
-    let HV = Math.round(HardnessVolume * 10) / 10;
-    let BV = Math.round(BufferVolume * 10) / 10;
-    let WV = Math.round(WaterVolume * 10) / 10;
-
-    document.getElementById("HardnessVolume").innerHTML = HV.toFixed(1) + "&nbsp;g";
-    document.getElementById("BufferVolume").innerHTML = BV.toFixed(1) + "&nbsp;g";
-    document.getElementById("WaterVolume").innerHTML = WV.toFixed(1) + "&nbsp;g";
-    showResults();
-
-
-}
-
-//remineralisation update values
-
-function changeBaseWater() {
-    document.getElementById("BaseWater").value="Custom";
-}
-
-function changeTargetWater() {
-    document.getElementById("TargetWater").value="Custom";
-}
-
-function changeBaseWaterPicker() {
-    let SelectedWater = document.getElementById("BaseWater").value;
+    document.getElementById("coffeeweightoutput").innerHTML = Math.round(coffee_g * 100) / 100;
+    document.getElementById("coffeestrengthoutput").innerHTML = Math.round(coffee_strength * 100) / 100;
+    document.getElementById("fatweightoutput").innerHTML = Math.round(fat_g * 100) / 100;
+    document.getElementById("fatstrengthoutput").innerHTML = Math.round(fat_strength * 100) / 100;  
+    document.getElementById("lactoseweightoutput").innerHTML = Math.round(lactose_g * 100) / 100;
+    document.getElementById("lactosestrengthoutput").innerHTML = Math.round(lactose_strength * 100) / 100;
+    document.getElementById("proteinweightoutput").innerHTML = Math.round(protein_g * 100) / 100;
+    document.getElementById("proteinstrengthoutput").innerHTML = Math.round(protein_strength * 100) / 100;
+    document.getElementById("totalweightoutput").innerHTML = Math.round(totalweight * 100) / 100;
+    document.getElementById("totalvolumeoutput").innerHTML = Math.round(totalvolume_ml * 100) / 100;
+    document.getElementById("totalvolumeoutput_oz").innerHTML = Math.round(totalvolume_oz * 100) / 100;
     
-    for (let i = 0; i < BaseWaterSpecs.length; i++) {
-
-        if (BaseWaterSpecs[i].name == SelectedWater) {
-            document.getElementById("BaseKH").value = BaseWaterSpecs[i].KH;
-            document.getElementById("BaseGH").value = BaseWaterSpecs[i].GH;
-        }
-    }
-
-}
-
-function changeTargetWaterPicker() {
-    let SelectedWater = document.getElementById("TargetWater").value;
     
-    for (let i = 0; i < TargetWaterSpecs.length; i++) {
-        if (TargetWaterSpecs[i].name == SelectedWater) {
-            document.getElementById("TargetKH").value = TargetWaterSpecs[i].KH;
-            document.getElementById("TargetGH").value = TargetWaterSpecs[i].GH;
-        }
-    }
-}
-
-//Bottle calculator
-
-function calculateBottle() {
-    var Ca = Number(document.getElementById("BottleCalcium").value);
-    var Mg = Number(document.getElementById("BottleMagnesium").value);
-    var Bicarb = Number(document.getElementById("BottleBicarb").value);
-
-    var GH = Ca*2.497 + Mg*4.118;
-    var KH = Bicarb*0.820;
-
-    document.getElementById("BottleHardness").innerHTML = GH.toFixed(1) + "&nbsp;ppm";
-    document.getElementById("BottleBuffer").innerHTML = KH.toFixed(1) + "&nbsp;ppm";
 
     showResults();
 
+}
 
+function calculateCupsize() {
+    var coffeeweight = Number(document.getElementById("cupsizecoffeeweight").value);
+    var cupsizeTDS = Number(document.getElementById("cupsizeTDS").value);
+    var aeration = Number(document.getElementById("cupsizeaeration").value);
+    var desiredTDS = Number(document.getElementById("desiredTDS").value);
+    var condensation = Number(document.getElementById("cupsizecondensation").value);
+
+
+    //calculations
+    
+    var milkweight =  (coffeeweight * (cupsizeTDS / desiredTDS) - coffeeweight) / (1 + (condensation / 100));
+    var cupvolume = (coffeeweight * (cupsizeTDS / desiredTDS) - coffeeweight) * (1 + (aeration/100)) + coffeeweight;
+    var cupvolume_oz = cupvolume / 28.41;
+
+    
+
+    // Display results
+    document.getElementById("milkweightoutput").innerHTML = Math.round(milkweight * 10) / 10;
+    document.getElementById("cupvolumeoutput").innerHTML = Math.round(cupvolume * 10) / 10;
+    document.getElementById("cupvolumeoutput_oz").innerHTML = Math.round(cupvolume_oz * 10) / 10;     
+
+    showResults();
+
+}
+
+function calculateSprosize() {
+    var sproTDS = Number(document.getElementById("sproTDS").value);
+    var sprodesiredTDS = Number(document.getElementById("sprodesiredTDS").value);
+    var sproaeration = 0.01 * Number(document.getElementById("sproaeration").value);
+    var cupvolume = Number(document.getElementById("sprocupvolume").value);
+    var sprocondensation = 0.01 * Number(document.getElementById("sprocondensation").value);
+
+
+    //calculations
+    
+    var dilution = (sproTDS - sprodesiredTDS) / sproTDS;
+    var volincrease = (sproaeration - sprocondensation) / (1 + sprocondensation);
+    var aeffect = dilution * volincrease;
+    var effectivevol = cupvolume / (1 + aeffect);
+    var sprosize = (1 - dilution) * effectivevol;
+
+    console.log ("dilution = " + dilution);
+    console.log ("vol increase = " + volincrease);
+    console.log ("aeration effect = " + aeffect);
+    console.log ("effective vol = " + effectivevol);
+    console.log ("final answer = " + sprosize);
+
+    // Display results
+    document.getElementById("sproweightoutput").innerHTML = Math.round(sprosize * 100) / 100;
+
+    showResults();
 }
 
 // Error collection
 
 function checkError() {
+    var aeration = Number(document.getElementById("aeration").value);
+    var condensation = Number(document.getElementById("condensation").value);
+
+    var cupaeration = Number(document.getElementById("cupsizeaeration").value);
+    var cupcondensation = Number(document.getElementById("cupsizecondensation").value);
+
+    var sproaeration = Number(document.getElementById("sproaeration").value);
+    var sprocondensation = Number(document.getElementById("sprocondensation").value);
+
+    var cupsizeTDS = Number(document.getElementById("cupsizeTDS").value);
+    var desiredTDS = Number(document.getElementById("desiredTDS").value);
+
+    var sproTDS = Number(document.getElementById("sproTDS").value);
+    var sprodesiredTDS = Number(document.getElementById("sprodesiredTDS").value);
 
 
-    var BaseGH = Number(document.getElementById("BaseGH").value);
-    var BaseKH = Number(document.getElementById("BaseKH").value);
-    var TargetGH = Number(document.getElementById("TargetGH").value);
-    var TargetKH = Number(document.getElementById("TargetKH").value);
-    var reminsubmit = document.getElementById("remin-submit");
+    var cowsubmit = document.getElementById("cowculator-submit");
+    var cupsubmit = document.getElementById("cupsize-cowculator-submit");
+    var sprosubmit = document.getElementById("spro-cowculator-submit");
 
-    console.log(reminsubmit)
-
-    if (TargetGH < BaseGH | TargetKH < BaseKH) {
-        reminsubmit.value = "Target GH/KH must be higher than base";
-        reminsubmit.classList.add("app-input-error");
+    if (aeration < condensation) {
+        cowsubmit.value = "Aeration must be higher than condensation";
+        cowsubmit.classList.add("app-input-error");
+        return;
     } else {
-        reminsubmit.value = "Calculate";
-        reminsubmit.classList.remove("app-input-error");
+        cowsubmit.value = "Calculate";
+        cowsubmit.classList.remove("app-input-error");
     }
+
+    if (cupaeration < cupcondensation) {
+        cupsubmit.value = "Aeration must be higher than condensation";
+        cupsubmit.classList.add("app-input-error");
+    } else if (cupsizeTDS < desiredTDS) {
+        cupsubmit.value = "Target strength must be lower than TDS";
+        cupsubmit.classList.add("app-input-error");
+    } else {
+        cupsubmit.value = "Calculate";
+        cupsubmit.classList.remove("app-input-error");
+    }
+
+    if (sproaeration < sprocondensation) {
+        sprosubmit.value = "Aeration must be higher than condensation";
+        sprosubmit.classList.add("app-input-error");
+    } else if (sproTDS < sprodesiredTDS) {
+        sprosubmit.value = "Target strength must be lower than TDS";
+        sprosubmit.classList.add("app-input-error");
+    } else {
+        sprosubmit.value = "Calculate";
+        sprosubmit.classList.remove("app-input-error");
+    }
+
+
+
 }
 
 // Size tweak
@@ -450,21 +257,42 @@ function checkError() {
 
 function resizeTweak () {
     var container = document.getElementById("app-container")
-   
-    if (container.clientWidth < 500) {
-        var spacers = document.querySelectorAll(".app-grid-header-spacer");
-        spacers.forEach(element => {
-            element.classList.add("zero-width");
-        });
+    var cowculatorgrid = document.getElementById("cowculator-input-grid");
+    var cupsizegrid = document.getElementById("cupsize-grid");
+    var sprosizegrid = document.getElementById("sprosize-grid");
+    
+    if (container.clientWidth < 600) {
 
-
-
+        container.classList.add("full-width");
 
      } else {
-        var spacers = document.querySelectorAll(".app-grid-header-spacer");
-        spacers.forEach(element => {
-            element.classList.remove("zero-width");
-        });
+
+        container.classList.remove("full-width");
+
+
+    }
+
+    if (container.clientWidth < 400) {
+        
+        cowculatorgrid.classList.add("app-two-column-grid");
+        cowculatorgrid.classList.remove("app-four-column-grid");
+
+        cupsizegrid.classList.add("app-two-column-grid");
+        cupsizegrid.classList.remove("app-four-column-grid");
+
+        sprosizegrid.classList.add("app-two-column-grid");
+        sprosizegrid.classList.remove("app-four-column-grid");
+
+     } else {
+
+        cowculatorgrid.classList.remove("app-two-column-grid");
+        cowculatorgrid.classList.add("app-four-column-grid");
+
+        cupsizegrid.classList.remove("app-two-column-grid");
+        cupsizegrid.classList.add("app-four-column-grid");
+
+        sprosizegrid.classList.remove("app-two-column-grid");
+        sprosizegrid.classList.add("app-four-column-grid");
 
 
     }
