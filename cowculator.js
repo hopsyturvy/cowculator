@@ -152,7 +152,7 @@ function calculateCupsize() {
     //calculations
     
     var milkweight =  (coffeeweight * (cupsizeTDS / desiredTDS) - coffeeweight) / (1 + (condensation / 100));
-    var cupvolume = (coffeeweight * (cupsizeTDS / desiredTDS) - coffeeweight) * (1 + (aeration/100)) + coffeeweight;
+    var cupvolume = coffeeweight + milkweight * (1 + (aeration/100))
     var cupvolume_oz = cupvolume / 28.41;
 
     
