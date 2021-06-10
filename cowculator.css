@@ -2,6 +2,11 @@
 
 /* Body and Container Elements */
 
+
+/* @Jakey the app-gap calc is used to create variable padding at the sides to keep it proportional to width
+(until it's too narrow, at which point it's switched to full-width by the JS. You could adjust the calculation
+or the min/max values to get different results */
+
 .app-container {
     --app-gap: calc(-0.25*(300px - 100%));
     max-width: 680px;
@@ -395,6 +400,8 @@ font-size: 18px;
 
 
 /* JS selectable options */
+
+/* @Jakey 'app-container.full-width' is the class added by the JS */
 
     .app-container.full-width {
       max-width: 100%;

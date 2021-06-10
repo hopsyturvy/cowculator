@@ -264,6 +264,8 @@ function resizeTweak () {
     var cupsizegrid = document.getElementById("cupsize-grid");
     var sprosizegrid = document.getElementById("sprosize-grid");
     
+// @Jakey this section changes the css class of the container element for widths under 600px
+
     if (container.clientWidth < 600) {
 
         container.classList.add("full-width");
@@ -274,6 +276,8 @@ function resizeTweak () {
 
 
     }
+
+// @Jakey and this section switches to one-column layout for widths under 400px
 
     if (container.clientWidth < 400) {
         
