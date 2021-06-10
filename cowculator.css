@@ -11,8 +11,8 @@
     border-radius: 10px;
     padding-left: max(10px, min(50px, var(--app-gap)));
     padding-right: max(10px, min(50px, var(--app-gap)));
-    padding-top: max(15px, min(50px, var(--app-gap)));
-    padding-bottom: max(20px, min(50px, var(--app-gap)));
+    padding-top: 75px;
+    padding-bottom: 25px;
 
     font-family: Head,Helvetica,Arial,Lucida,sans-serif;
 }
@@ -31,7 +31,8 @@
     width: 100%;
     font-size: 30pt;
     font-weight: 900;
-    line-height: normal;
+    line-height: 0.8;
+    margin-bottom: 10px;
 }
 
 
@@ -40,7 +41,8 @@
     font-size: 18pt;
     font-weight: 900;
     color: #666;
-    line-height: normal;
+    line-height: 0.8;
+    margin-bottom: 10px;
 }
 
 
@@ -107,7 +109,7 @@ select:focus {
     float: right;
     border: solid #f4f4f4;
     border-width: 0 0 2px 0;
-    width: 1.5em;
+    width: 50px;
 }
 
 .app-form-unit-selector {
@@ -132,7 +134,7 @@ select:focus {
     background-position: right 0 top 55%,0 0!important;
     background-size: 8px auto,100%!important;
     font-family: inherit;
-    min-width: 1.5em;
+    min-width: 50px;
 }
 
 .app-form-unit-selector:focus { 
@@ -189,7 +191,6 @@ select:focus {
     background-color: #f4f4f4;
     border-width: 0px;
     border-radius: 5px;
-    margin-bottom: 40px;
 }
 
 input.app-input-error {
@@ -209,11 +210,12 @@ input.app-input-error {
 
 /* Grid input form elements */
 
-.app-input-grid  {
+.app-input-grid, .app-output-grid  {
     display: grid;
-    align-items: center;
+    align-items: start;
     column-gap: 1em;
-    margin-top: 40px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .app-six-column-grid {
@@ -236,14 +238,16 @@ input.app-input-error {
     grid-template-columns: 1fr auto;
 }
 
-.app-grid-header {
+.app-grid-header, .app-grid-middle-header {
     
     font-size: 18pt;
     font-weight: 900;
-    line-height: normal;
-
-    margin-top: 0px;
+    line-height: 20px;
     margin-bottom: 10px;
+}
+
+.app-grid-middle-header {
+    margin-top: 20px;
 }
 
 .app-grid-section {
@@ -252,8 +256,9 @@ input.app-input-error {
 
 .app-grid-section, .app-grid-unit-fixed {
     border-bottom: solid white 2px;
-    margin-bottom: 40px;
     box-sizing: border-box;
+    margin-bottom: 30px;
+    height: 20px;
 }
 
 .app-grid-label {
@@ -295,19 +300,19 @@ input.app-input-error {
 }
 
 .three-column-span {
-    grid-column: 1 / span 3;
+    grid-column: span 3;
 }
 
 .four-column-span {
-    grid-column: 1 / span 4;
+    grid-column: span 4;
 }
 
 .five-column-span {
-    grid-column: 1 / span 5;
+    grid-column: span 5;
 }
 
 .six-column-span {
-    grid-column: 1 / span 6;
+    grid-column: span 6;
 }
 
 .column-span-2-3 {
@@ -319,7 +324,7 @@ input.app-input-error {
 }
 
 .app-grid-unit-fixed, .app-output-unit-fixed {
-    min-width: 1.5em;
+    min-width: 50px;
 }
 
 
@@ -354,6 +359,11 @@ input.app-input-error {
     display: flex;
 }
 
+.app-output-title {
+font-size: 18px;
+    font-weight: 900;
+    line-height: 25px;
+}
 
 .app-results-container {
     width: 100%;
@@ -378,6 +388,8 @@ input.app-input-error {
     padding: 1em;
     border-radius: 5px; 
     row-gap: 0.5em;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 

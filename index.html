@@ -17,7 +17,6 @@
 
 <body>
 
-
     <div class="app-container" id="app-container">
         <div class="app-tab-picker">
             <div class="app-current-tab app-tab" id="app-Cowculator-tab">
@@ -65,7 +64,7 @@
                 <div class="app-grid-unit-fixed">%</div>
 
 
-                <div class="app-grid-header two-column-span">
+                <div class="app-grid-middle-header two-column-span">
 
                     Milk
                 </div>
@@ -271,47 +270,42 @@
             <input type="submit" class="app-submit-button" id="cupsize-cowculator-submit" value="Calculate">
 
             <!--<div class="app-output-title">Cup size</div>-->
-            <div class="app-output-container app-five-column-grid">
+            <div class="app-output-grid app-five-column-grid">
 
 
                 <!-- row 1-->
 
 
-                <div class="app-output-label three-column-span">
+                <div class="app-output-title">
                     Milk weight:
                 </div>
-                <div class="app-output Output" id="milkweightoutput"></div>
-                <div class="app-output-unit-fixed">g</div>
-
-                <div class="grid-row-separator four-column-span">
+                <div class="app-grid-section three-column-span">
+                    <div class="app-output Output" id="milkweightoutput"></div>
                 </div>
-
-                <div class="grid-row-separator">
+                <div class="app-grid-section">
+                    <div class="app-output-unit-fixed">g</div>
                 </div>
 
                 <!-- row 2-->
 
 
-                <div class="app-output-label">
+                <div class="app-output-title">
                     Cup volume:
                 </div>
-                <div class="app-output Output" id="cupvolumeoutput"></div>
-                <div class="app-output-unit-fixed">ml</div>
-                <div class="app-output Output" id="cupvolumeoutput_oz"></div>
-                <div class="app-output-unit-fixed">oz</div>
-
-
-                <div class="grid-row-separator column-span-1-2">
+                <div class="app-grid-section">
+                    <div class="app-output Output" id="cupvolumeoutput"></div>
+                </div>
+                <div class="app-grid-section">
+                    <div class="app-output-unit-fixed">ml</div>
+                </div>
+                <div class="app-grid-section">
+                    <div class="app-output Output" id="cupvolumeoutput_oz"></div>
+                </div>
+                <div class="app-grid-section">
+                    <div class="app-output-unit-fixed">oz</div>
                 </div>
 
-                <div class="grid-row-separator">
-                </div>
 
-                <div class="grid-row-separator">
-                </div>
-
-                <div class="grid-row-separator">
-                </div>
             </div>
 
 
@@ -362,14 +356,14 @@
 
                 <div class="app-grid-section">
                     <label for="sprocupvolume" class="app-grid-label">Cup volume</label>
-                    <input class="app-form-input" type="number" min="0" id="sprocupvolume"
-                        name="sprocupvolume" required>
+                    <input class="app-form-input" type="number" min="0" id="sprocupvolume" name="sprocupvolume"
+                        required>
                 </div>
                 <div class="app-grid-section">
-                <select class="app-form-unit-selector" name="cupvolpicker" id="cupvolpicker">
-                    <option value="ml">ml</option>
-                    <option value="oz">oz</option>
-                </select>
+                    <select class="app-form-unit-selector" name="cupvolpicker" id="cupvolpicker">
+                        <option value="ml">ml</option>
+                        <option value="oz">oz</option>
+                    </select>
                 </div>
 
             </div>
@@ -377,21 +371,22 @@
             <input type="submit" class="app-submit-button" id="spro-cowculator-submit" value="Calculate">
 
             <!-- <div class="app-output-title">Result</div> -->
-            <div class="app-output-container app-three-column-grid">
+            <div class="app-output-grid app-three-column-grid">
                 <!-- row 1-->
 
 
-                <div class="app-output-label">
+                <div class="app-output-title">
                     Espresso size:
                 </div>
-                <div class="app-output Output" id="sproweightoutput"></div>
-                <div class="app-output-unit-fixed">g</div>
-
-                <div class="grid-row-separator column-span-1-2">
+                <div class="app-grid-section">
+                    <div class="app-output Output" id="sproweightoutput"></div>
                 </div>
-
-                <div class="grid-row-separator">
+                <div class="app-grid-section">
+                    <div class="app-output-unit-fixed">g</div>
                 </div>
+                
+            </div>
+
 
 
 
@@ -401,7 +396,6 @@
 
 
         </form>
-
 
     </div>
 
